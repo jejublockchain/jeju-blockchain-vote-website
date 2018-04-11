@@ -52,3 +52,16 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-naver', :git => 'git://github.com/beomjae/omniauth-naver'
+gem "omniauth-google-oauth2"
+gem 'omniauth-instagram'
+gem 'omniauth-kakao', :git => 'git://github.com/hcn1519/omniauth-kakao'
+gem 'omniauth-line'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'figaro'
+gem 'jquery-rails'
