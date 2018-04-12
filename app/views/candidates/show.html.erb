@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>후보자명:</strong><br>
+  <%= @candidate.name %>
+</p>
+
+<p>
+  <strong>프로필 사진:</strong><br>
+	<img src="<%= @candidate.main_image_url %>" width="200">
+</p>
+
+<p>
+  <strong>후보자 설명:</strong>
+  <%= @candidate.description %>
+</p>
+
+<p>
+  <strong>공약:</strong>
+  <%= @candidate.pledge %>
+</p>
+
+<p>
+  <strong>정책:</strong>
+  <%= @candidate.policy %>
+</p>
+
+<%= link_to '목록으로 이동', candidates_path %>

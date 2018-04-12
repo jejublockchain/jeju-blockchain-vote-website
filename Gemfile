@@ -65,3 +65,14 @@ gem 'omniauth-line'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'figaro'
 gem 'jquery-rails'
+
+gem 'font-awesome-rails'
+gem 'shrine'
+gem 'kaminari'
+gem 'annotate', require: false
+gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem "image_processing"
+gem "mini_magick", ">= 4.3.5"
+gem "awesome_print", require:"ap"
+gem 'roda'

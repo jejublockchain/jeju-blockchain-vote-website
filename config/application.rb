@@ -16,6 +16,6 @@ module JejuBlockchainVote
     # -- all .rb files in that directory are automatically loaded.
 		
 		config.i18n.default_locale = :ko
-
+		config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
   end
 end
