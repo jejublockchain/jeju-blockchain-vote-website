@@ -4,7 +4,11 @@
 		<li><a href="/">HOME</a></li>
 		<li><a href="/about">ABOUT</a></li>
 		<% if user_signed_in? %>
+			<li><%= link_to('내 계정',  edit_user_registration_path) %></li>
 			<li><%= link_to('로그아웃', destroy_user_session_path, method: :delete) %></li>
+			<li><a href="#">후보자 관리</a></li>
+			<li><a href="#">회원관리 관리</a></li>
+			<li><a href="#">관리자계정 관리</a></li>
 		<% else %>
 			<li><%= link_to('로그인', new_user_session_path)  %></li>
 			<li><%= link_to('회원가입', new_user_registration_path)  %> </li>
