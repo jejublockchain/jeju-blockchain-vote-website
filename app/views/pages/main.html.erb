@@ -13,7 +13,7 @@
 		맛집 선호도 투표 현황
 	</h3>
 	<div>
-		총 응답자 : <span id="total_vote_count">0</span>명
+		총 응답자 : <span class="total_vote_count">0</span>명
 	</div>
 	<div>
 		<strong>맛집 선호도 합계</strong>
@@ -33,21 +33,12 @@
 
 <div>
 	<h3>
-		주간 선호도 참여현황
-	</h3>
-	<div>
-		#### 주간 선호도 참여현황 차트 ###
-	</div>
-</div>
-
-<div>
-	<h3>
 		방문자 통계
 	</h3>
 	<div>
 		<div>
 			<div>
-				10555
+				<%= @total_visit_count %>
 			</div>
 			<div>
 				총 방문자
@@ -55,7 +46,7 @@
 		</div>
 		<div>
 			<div>
-				3276
+				<%= @weekly_visit_count %>
 			</div>
 			<div>
 				주간 방문자
@@ -63,7 +54,7 @@
 		</div>
 		<div>
 			<div>
-				352
+				<%= @today_visit_count %>
 			</div>
 			<div>
 				일간 방문자
@@ -71,21 +62,12 @@
 		</div>
 		<div>
 			<div>
-				1077
+				<span class="total_vote_count">0</span>
 			</div>
 			<div>
 				총 참여자
 			</div>
 		</div>
-	</div>
-</div>
-
-<div>
-	<h3>
-		참여자 위치 정보
-	</h3>
-	<div>
-		구글 맵
 	</div>
 </div>
 
@@ -96,7 +78,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <script>
 $(function(){
-	$("#total_vote_count").html(total_vote_count);
+	$(".total_vote_count").html(total_vote_count);
 	renderCandidatesScoreList(candidates);
 	renderBarChart();
 	renderPieChart();
@@ -133,14 +115,11 @@ function renderBarChart(){
 	});
 }
 	
-	
 	function renderPieChart() {
 		var piectx = document.getElementById('pie-chart-canvas');
 		var pieChart = new Chart(piectx,{"type":"pie","data":{"labels":candidates_names,"datasets":[{"label":"맛집 선호도 비율","data":candidates_scores,"backgroundColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"]}]}});
 	}
 </script>
-
-
 
 <script id="candidates-score-list-template" type="text/x-handlebars-template">
 	<ul class="candidates-score-list">
