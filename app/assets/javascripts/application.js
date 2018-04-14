@@ -13,5 +13,4 @@
 //= require jquery
 //= require semantic-ui
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .

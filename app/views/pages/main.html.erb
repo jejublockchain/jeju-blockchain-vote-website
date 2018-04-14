@@ -1,6 +1,13 @@
 <h1>블록체인 기반 맛집 선호도 조사</h1>
 
-<ul class="candidates-score-list"></ul>
+<div class="candidate-list">
+	<% @candidates.each do |candidate| %>
+	<div>
+		<img src="<%=candidate.main_image_url %>" width="150">
+		<strong><%= candidate.name %></strong>
+	</div>
+	<% end %>
+</div>
 
 <% if current_user.nil? %>
 <%= link_to '블록체인 기반 맛집 선호도 투표하기', new_user_session_path %>
@@ -79,17 +86,9 @@
 <script>
 $(function(){
 	$(".total_vote_count").html(total_vote_count);
-	renderCandidatesScoreList(candidates);
 	renderBarChart();
 	renderPieChart();
 });
-	
-function renderCandidatesScoreList(candidates) {
-	var source   = document.getElementById("candidates-score-list-template").innerHTML;
-	var template = Handlebars.compile(source);
-	var html    = template(candidates);
-	$(".candidates-score-list").replaceWith(html);
-}
 	
 function renderBarChart(){
 
@@ -119,12 +118,4 @@ function renderBarChart(){
 		var piectx = document.getElementById('pie-chart-canvas');
 		var pieChart = new Chart(piectx,{"type":"pie","data":{"labels":candidates_names,"datasets":[{"label":"맛집 선호도 비율","data":candidates_scores,"backgroundColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"]}]}});
 	}
-</script>
-
-<script id="candidates-score-list-template" type="text/x-handlebars-template">
-	<ul class="candidates-score-list">
-	{{#each this}}
-		<li>{{name}} ({{score}})</li>
-	{{/each}}
-	</ul>
 </script>
