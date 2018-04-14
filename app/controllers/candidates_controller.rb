@@ -28,11 +28,13 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
-        format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
+        format.html {  }
         format.json { render :show, status: :created, location: @candidate }
+				format.js
       else
         format.html { render :new }
         format.json { render json: @candidate.errors, status: :unprocessable_entity }
+				format.js
       end
     end
   end
@@ -44,9 +46,11 @@ class CandidatesController < ApplicationController
       if @candidate.update(candidate_params)
         format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidate }
+				format.js
       else
         format.html { render :edit }
         format.json { render json: @candidate.errors, status: :unprocessable_entity }
+				format.js
       end
     end
   end

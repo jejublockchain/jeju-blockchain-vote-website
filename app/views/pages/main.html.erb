@@ -1,1 +1,151 @@
-<h1>블록체인 기반 후보자 선호도 조사</h1>
+<h1>블록체인 기반 맛집 선호도 조사</h1>
+
+<ul class="candidates-score-list"></ul>
+
+<% if current_user.nil? %>
+<%= link_to '블록체인 기반 맛집 선호도 투표하기', new_user_session_path %>
+<% elsif current_user.vote_record.nil? %>
+<%= link_to '블록체인 기반 맛집 선호도 투표하기', vote_new_path %>
+<% end %>
+
+<div>
+	<h3>
+		맛집 선호도 투표 현황
+	</h3>
+	<div>
+		총 응답자 : <span id="total_vote_count">0</span>명
+	</div>
+	<div>
+		<strong>맛집 선호도 합계</strong>
+		<div style="width:75%;">
+			<canvas id="bar-chart-canvas"></canvas>
+		</div>
+	</div>
+	<div>
+		<strong>맛집 선호도 비율</strong>
+		<div>
+			<div style="width:75%;">
+				<canvas id="pie-chart-canvas"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<h3>
+		주간 선호도 참여현황
+	</h3>
+	<div>
+		#### 주간 선호도 참여현황 차트 ###
+	</div>
+</div>
+
+<div>
+	<h3>
+		방문자 통계
+	</h3>
+	<div>
+		<div>
+			<div>
+				10555
+			</div>
+			<div>
+				총 방문자
+			</div>
+		</div>
+		<div>
+			<div>
+				3276
+			</div>
+			<div>
+				주간 방문자
+			</div>
+		</div>
+		<div>
+			<div>
+				352
+			</div>
+			<div>
+				일간 방문자
+			</div>
+		</div>
+		<div>
+			<div>
+				1077
+			</div>
+			<div>
+				총 참여자
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<h3>
+		참여자 위치 정보
+	</h3>
+	<div>
+		구글 맵
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script type="text/javascript" src="/web3.min.js"></script>
+<script type="text/javascript" src="/blockchainvote.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script>
+$(function(){
+	$("#total_vote_count").html(total_vote_count);
+	renderCandidatesScoreList(candidates);
+	renderBarChart();
+	renderPieChart();
+});
+	
+function renderCandidatesScoreList(candidates) {
+	var source   = document.getElementById("candidates-score-list-template").innerHTML;
+	var template = Handlebars.compile(source);
+	var html    = template(candidates);
+	$(".candidates-score-list").replaceWith(html);
+}
+	
+function renderBarChart(){
+
+	
+		var horizontalBarChartData = [{x:'2016-12-25', y:200}, {x:'2016-12-26', y:100}];
+	
+	var ctx = document.getElementById('bar-chart-canvas');
+	var barChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data:{
+			"labels": candidates_names,
+			"datasets":[
+				{
+					"label":"맛집 선호도 수",
+					"data":candidates_scores,
+					"fill":false,
+					"backgroundColor":["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)","rgba(201, 203, 207, 0.2)"],
+					"borderColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"],
+					"borderWidth":1
+				}
+			]},
+		"options":{"scales":{"xAxes":[{"ticks":{"beginAtZero":true}}]}}
+	});
+}
+	
+	
+	function renderPieChart() {
+		var piectx = document.getElementById('pie-chart-canvas');
+		var pieChart = new Chart(piectx,{"type":"pie","data":{"labels":candidates_names,"datasets":[{"label":"맛집 선호도 비율","data":candidates_scores,"backgroundColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"]}]}});
+	}
+</script>
+
+
+
+<script id="candidates-score-list-template" type="text/x-handlebars-template">
+	<ul class="candidates-score-list">
+	{{#each this}}
+		<li>{{name}} ({{score}})</li>
+	{{/each}}
+	</ul>
+</script>

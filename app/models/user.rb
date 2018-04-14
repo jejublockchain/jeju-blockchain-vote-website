@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 	
 	has_many :identities, dependent: :destroy
+	has_one :vote_record, dependent: :destroy
   
   def self.find_for_oauth(auth, signed_in_resource = nil)
 		

@@ -1,0 +1,23 @@
+회원이 생성중입니다. 기다려주세요.
+
+<%= form_with url: user_wallets_create_path, local: true do |form| %>
+  <%= form.hidden_field :user_id, id: 'user_id' %>
+	<%= form.hidden_field :wallet_account_id, id: 'wallet_account_id' %>
+	<%= form.hidden_field :wallet_account_password, id: 'wallet_account_password' %>
+<% end %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script type="text/javascript" src="/web3.min.js"></script>
+<script type="text/javascript" src="/blockchainvote.js"></script>
+<script>
+	$(function(){
+		var newAccount = web3.personal.newAccount('FcN8vjgjhnGAA9b6');
+		web3.personal.unlockAccount(newAccount, 'FcN8vjgjhnGAA9b6', 0);
+		console.log(window.newAccount);
+		$("#user_id").val('<%= @user.id %>');
+		$("#wallet_account_id").val(newAccount);
+		$("#wallet_account_password").val('FcN8vjgjhnGAA9b6');
+		$('form').submit();
+	});
+</script>

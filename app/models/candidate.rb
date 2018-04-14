@@ -14,4 +14,7 @@
 
 class Candidate < ApplicationRecord
 	include ImageUploader[:main_image]
+	
+	has_many :vote_records, dependent: :destroy
+	has_many :users, :through => :vote_records
 end

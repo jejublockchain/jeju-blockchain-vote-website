@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'stat/weekly_vote_records'
+
+  get 'stat/visitors_count'
+
+  post 'user_wallets/create'
+
+  get 'vote/new'
+	post 'vote/create'
+
   resources :candidates
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks'}
   get 'register/info1'

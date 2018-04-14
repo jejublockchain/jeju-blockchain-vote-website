@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412011013) do
+ActiveRecord::Schema.define(version: 20180414112526) do
 
   create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -48,9 +48,28 @@ ActiveRecord::Schema.define(version: 20180412011013) do
     t.string "wallet_account_id"
     t.string "wallet_account_password"
     t.string "name"
+    t.text "wallet_account_qrcode_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "visit_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "day"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vote_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "candidate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_vote_records_on_candidate_id"
+    t.index ["user_id"], name: "index_vote_records_on_user_id"
+  end
+
   add_foreign_key "identities", "users"
+  add_foreign_key "vote_records", "candidates"
+  add_foreign_key "vote_records", "users"
 end

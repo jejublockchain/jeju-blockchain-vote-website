@@ -1,0 +1,41 @@
+<h1>블록체인 기반 맛집 선호도 조사</h1>
+
+<%= form_with url: vote_create_path, remote: true do |form| %>
+<div>
+	<% @candidates.each do |candidate| %>
+	<div>
+		<img src="<%= candidate.main_image_url%>" width="200" />
+		<div>
+			<%= candidate.name %>
+		</div>
+		<div>
+			<input type="radio" id="candidate<%= candidate.id %>"
+     name="candidate_id" value="<%= candidate.id %>" data-id="<%= candidate.id %>" data-name="<%= candidate.name %>">
+    	<label for="contactChoice2"><%= candidate.name %></label>
+		</div>
+	</div>
+<% end %>
+</div>
+
+<%= form.submit %>
+
+<% end %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script type="text/javascript" src="/web3.min.js"></script>
+<script type="text/javascript" src="/blockchainvote.js"></script>
+<script>
+	// $(function(){
+	// 	$("#btnVote").on("click", function(){
+	// 		var selectedCandidate = $('input[name=candidate]:checked').data('id');
+	// 		var selectedCandidateName = $('input[name=candidate]:checked').data('name');
+	// 		alert(selectedCandidateName);
+	// 		if(selectedCandidateName) {
+	// 			if(vc.vote('<%= current_user.wallet_account_id %>', selectedCandidateName)) {
+	// 				alert('투표가 완료 되었습니다.');
+	// 			}
+	// 		}
+	// 	});
+	// });
+</script>

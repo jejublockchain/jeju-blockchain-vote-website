@@ -1,0 +1,4 @@
+if(vc.vote('<%= current_user.wallet_account_id %>', '<%= @candidate.name %>')) {
+	alert('투표가 완료 되었습니다.');
+	location.href='/';
+}
