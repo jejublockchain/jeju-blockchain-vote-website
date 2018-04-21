@@ -1,24 +1,88 @@
-<h1>블록체인 기반 맛집 선호도 조사</h1>
+		<!-- Our Work Section -->
+		<div id="work" class="page">
+			<div class="container">
+					<!-- Title Page -->
+						<div class="row">
+								<div class="span12">
+										<div class="title-page">
+												<h2 class="title">맛집을 선택해주세요.</h2>
+												<h3 class="title-description">제주도에서 가장 맛있었던 <a href="#">맛집</a>을 선택해주세요.</h3>
+										</div>
+								</div>
+						</div>
+						<!-- End Title Page -->
 
-<div class="candidate-list">
-	<% @candidates.each do |candidate| %>
-	<div>
-		<img src="<%=candidate.main_image_url %>" width="150">
-		<strong><%= candidate.name %></strong>
-	</div>
-	<% end %>
-</div>
+						<!-- Portfolio Projects -->
+						<div class="row">
+							<div class="span3">
+									<!-- Filter -->
+										<nav id="options" class="work-nav">
+												<ul id="filters" class="option-set" data-option-key="filter">
+													<li class="type-work">음식 종류</li>
+														<li><a href="#filter" data-option-value="*" class="selected">모든 맛집 후보</a></li>
+														<li><a href="#filter" data-option-value=".한식">한식</a></li>
+														<li><a href="#filter" data-option-value=".양식">양식</a></li>
+														<li><a href="#filter" data-option-value=".중식">중식</a></li>
+													  <li><a href="#filter" data-option-value=".일식">일식</a></li>
+												</ul>
+										</nav>
+										<!-- End Filter -->
+								</div>
 
-<% if current_user.nil? %>
-<%= link_to '블록체인 기반 맛집 선호도 투표하기', new_user_session_path %>
-<% elsif current_user.vote_record.nil? %>
-<%= link_to '블록체인 기반 맛집 선호도 투표하기', vote_new_path %>
-<% end %>
+								<div class="span9">
+									<div class="row">
+											<section id="projects">
+													<ul id="thumbs">
+														
+					<% @candidates.each do |candidate| %>
+					<!-- Item Project and Filter Name -->
+					<li class="item-thumbs span3 design">
+					<!-- Fancybox - Gallery Enabled - Title - Full Image -->
+					<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<%= candidate.name %>" href="_include/img/work/full/image-01-full.jpg">
+					<span class="overlay-img"></span>
+					<span class="overlay-img-thumb font-icon-plus"></span>
+					</a>
+					<!-- Thumb Image and Description -->
+					<img src="<%=candidate.main_image_url %>" alt="">
+					</li>
+					<!-- End Item Project -->
+					<% end %>
 
-<div>
-	<h3>
-		맛집 선호도 투표 현황
-	</h3>
+														</ul>
+												</section>
+
+									</div>
+								</div>
+						</div>
+						<!-- End Portfolio Projects -->
+				</div>
+		</div>
+		<!-- End Our Work Section -->
+
+
+
+
+
+
+
+		<!-- About Section -->
+		<div id="#" class="page-alternate">
+		<div class="container">
+				<!-- Title Page -->
+				<div class="row">
+						<div class="span12">
+								<div class="title-page">
+										<h2 class="title">맛집 선호도 투표 현황</h2>
+										<h3 class="title-description">블록체인을 이용한 선호도 투표 현황을 그래프로 볼 수 있습니다.</h3>
+								</div>
+						</div>
+				</div>
+				<!-- End Title Page -->
+
+				<!-- People -->
+
+<div class="row">
+	<div class="span12">
 	<div>
 		총 응답자 : <span class="total_vote_count">0</span>명
 	</div>
@@ -28,6 +92,7 @@
 			<canvas id="bar-chart-canvas"></canvas>
 		</div>
 	</div>
+	<br><br><br>
 	<div>
 		<strong>맛집 선호도 비율</strong>
 		<div>
@@ -37,8 +102,10 @@
 		</div>
 	</div>
 </div>
+</div>
 
-<div>
+<div class="row">
+<div class="span12">
 	<h3>
 		방문자 통계
 	</h3>
@@ -76,6 +143,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
@@ -119,3 +187,156 @@ function renderBarChart(){
 		var pieChart = new Chart(piectx,{"type":"pie","data":{"labels":candidates_names,"datasets":[{"label":"맛집 선호도 비율","data":candidates_scores,"backgroundColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"]}]}});
 	}
 </script>
+			
+					</div>
+				</div>
+		<!-- End About Section -->
+
+
+		<!-- About Section -->
+		<div id="about" class="page-alternate">
+		<div class="container">
+				<!-- Title Page -->
+				<div class="row">
+						<div class="span12">
+								<div class="title-page">
+										<h2 class="title">About Us</h2>
+										<h3 class="title-description">제주 블록체인 연합 모임(제주시, 서귀포시)을 소개합니다.</h3>
+								</div>
+						</div>
+				</div>
+				<!-- End Title Page -->
+
+				<!-- People -->
+				<div class="row">
+
+						<!-- Start Profile -->
+					<div class="span4 profile">
+							<div class="image-wrap">
+										<div class="hover-wrap">
+												<span class="overlay-img"></span>
+												<span class="overlay-text-thumb">서귀포 1차 모임</span>
+										</div>
+										<img src="_include/img/profile/profile-01.jpg" alt="John Doe">
+								</div>
+								<h3 class="profile-name">서귀포 1차 모임</h3>
+								<p class="profile-description">서귀포에서는 일찍부터 블록체인 관련된 모임을 지속적으로 해오고 있었습니다. 식품, 농산품, 예술품 관련한 다양한 아이템이 나왔고 우선 가장 lite한 아이템을 가지고 개발을 해보자는 얘기가 나왔습니다.</p>
+								<div class="social">
+									<ul class="social-icons">
+											<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+												<li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
+												<li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
+										</ul>
+								</div>
+						</div>
+						<!-- End Profile -->
+
+						<!-- Start Profile -->
+					<div class="span4 profile">
+							<div class="image-wrap">
+										<div class="hover-wrap">
+												<span class="overlay-img"></span>
+												<span class="overlay-text-thumb">서귀포 2차 통합모임</span>
+										</div>
+										<img src="_include/img/profile/profile-02.jpg" alt="Jane Helf">
+								</div>
+								<h3 class="profile-name">서귀포 2차 통합모임</h3>
+								<p class="profile-description">제주시에서 활동하던 이호준 대표가 서귀포 모임에 합류하면서 제주시모임과 서귀포 모임을 통합 논의가 있었습니다. 해당 모임에서는 그동안 진행했던 연구와 결과물을 보여주는 시간이었습니다.</p>
+
+								<div class="social">
+									<ul class="social-icons">
+											<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+												<li><a href="#"><i class="font-icon-social-email"></i></a></li>
+										</ul>
+								</div>
+						</div>
+						<!-- End Profile -->
+
+						<!-- Start Profile -->
+					<div class="span4 profile">
+							<div class="image-wrap">
+										<div class="hover-wrap">
+												<span class="overlay-img"></span>
+												<span class="overlay-text-thumb">제주시 3차 통합모임</span>
+										</div>
+										<img src="_include/img/profile/profile-03.jpg" alt="Joshua Insanus">
+								</div>
+								<h3 class="profile-name">제주시 3차 통합모임</h3>
+								<p class="profile-description">제주시에서 서귀포 블록체인 연구 모임과 제주시 블록체인 연구 모임이 연합하여 그동안 연구했던 연구 결과를 나누고 lite한 결과물을 만들기로 결정하였습니다. 약 2주간 진행한 이 프로젝트는 해당 모임의 결과물입니다.</p>
+
+								<div class="social">
+									<ul class="social-icons">
+											<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+												<li><a href="#"><i class="font-icon-social-linkedin"></i></a></li>
+												<li><a href="#"><i class="font-icon-social-google-plus"></i></a></li>
+												<li><a href="#"><i class="font-icon-social-vimeo"></i></a></li>
+										</ul>
+								</div>
+						</div>
+						<!-- End Profile -->
+
+				</div>
+				<!-- End People -->
+		</div>
+		</div>
+		<!-- End About Section -->
+
+		<!-- Contact Section -->
+		<div id="contact" class="page">
+		<div class="container">
+				<!-- Title Page -->
+				<div class="row">
+						<div class="span12">
+								<div class="title-page">
+										<h2 class="title">Contact</h2>
+										<h3 class="title-description">블록체인 관련된 기술자문 등 필요한 연구 및 협조가 필요할 시 연락주세요. 대표 이메일을 남겨놓습니다.</h3>
+								</div>
+						</div>
+				</div>
+				<!-- End Title Page -->
+
+				<!-- Contact Form -->
+				<div class="row">
+					<div class="span9">
+
+							<form id="contact-form" class="contact-form" action="#">
+									<p class="contact-name">
+										<input id="contact_name" type="text" placeholder="Full Name" value="" name="name" />
+										</p>
+										<p class="contact-email">
+											<input id="contact_email" type="text" placeholder="Email Address" value="" name="email" />
+										</p>
+										<p class="contact-message">
+											<textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40"></textarea>
+										</p>
+										<p class="contact-submit">
+											<a id="contact-submit" class="submit" href="#">Send Your Email</a>
+										</p>
+
+										<div id="response">
+
+										</div>
+								</form>
+
+						</div>
+
+						<div class="span3">
+							<div class="contact-details">
+								<h3>Contact Details</h3>
+										<ul>
+												<li><a href="#">paul-lab@naver.com</a></li>
+												<li>
+														제주특별자치도
+														<br>
+														제주시 동광로 137
+														<br>
+														대동빌딩 4층
+												</li>
+										</ul>
+								</div>
+						</div>
+				</div>
+				<!-- End Contact Form -->
+		</div>
+		</div>
+		<!-- End Contact Section -->
