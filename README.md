@@ -8,7 +8,7 @@
 
 처음 프로젝트 개발환경을 구성하기 위해서는 다음의 절차를 진행하시면 됩니다.
 
-1. $ git clone https://github.com/beomjae/jeju-blockchain-vote-website.git
+1. $ git clone https://github.com/jejublockchain/jeju-blockchain-vote-website.git
 1. $ cd jeju-blockchain-vote-website
 1. $ bundle install
 1. install yarn
